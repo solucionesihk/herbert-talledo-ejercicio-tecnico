@@ -1,0 +1,922 @@
+{
+	"info": {
+		"_postman_id": "89d45e8b-4f86-47ad-9cc8-4efbe8b50595",
+		"name": "Ejercicio técnico - Herbert Talledo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4964860"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Creacion de cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"12345678\",\r\n    \"status\": true,\r\n    \"name\": \"herbert talledo bancayan 2\",\r\n    \"gender\": \"test\",\r\n    \"age\": 30,\r\n    \"address\": \"test address 2\",\r\n    \"phone\": \"3409483843\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice-cliente-url}}/clientes",
+							"host": [
+								"{{microservice-cliente-url}}"
+							],
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Creacion de cliente - ejemplo response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"12345678\",\r\n    \"status\": true,\r\n    \"name\": \"herbert talledo\",\r\n    \"gender\": \"test\",\r\n    \"age\": 30,\r\n    \"address\": \"test address 1\",\r\n    \"phone\": \"3409483843\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{microservice-cliente-url}}/clientes",
+									"host": [
+										"{{microservice-cliente-url}}"
+									],
+									"path": [
+										"clientes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 17:57:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"herbert talledo\",\n    \"gender\": \"test\",\n    \"age\": 30,\n    \"address\": \"test address 1\",\n    \"phone\": \"3409483843\",\n    \"password\": \"12345678\",\n    \"status\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Busqueda de cliente por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microservice-cliente-url}}/clientes/1",
+							"host": [
+								"{{microservice-cliente-url}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Busqueda de cliente por id - ejemplo response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/clientes/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"clientes",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 18:01:12 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"herbert talledo\",\n    \"gender\": \"test\",\n    \"age\": 30,\n    \"address\": \"test address 1\",\n    \"phone\": \"3409483843\",\n    \"password\": \"12345678\",\n    \"status\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Actualizacion datos cliente por id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"789\",\r\n    \"status\": true,\r\n    \"name\": \"draco\",\r\n    \"gender\": \"male\",\r\n    \"age\": 22,\r\n    \"address\": \"test address upd 2\",\r\n    \"phone\": \"123456--\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice-cliente-url}}/clientes/1",
+							"host": [
+								"{{microservice-cliente-url}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualizacion datos cliente por id - ejemplo response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"789\",\r\n    \"status\": true,\r\n    \"name\": \"draco\",\r\n    \"gender\": \"male\",\r\n    \"age\": 22,\r\n    \"address\": \"test address upd 2\",\r\n    \"phone\": \"123456--\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{microservice-cliente-url}}/clientes/1",
+									"host": [
+										"{{microservice-cliente-url}}"
+									],
+									"path": [
+										"clientes",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 06:20:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"draco\",\n    \"gender\": \"male\",\n    \"age\": 22,\n    \"address\": \"test address upd 2\",\n    \"phone\": \"123456--\",\n    \"password\": \"789\",\n    \"status\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminacion de cliente por id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{microservice-cliente-url}}/clientes/1",
+							"host": [
+								"{{microservice-cliente-url}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminacion de cliente por id - ejemplo response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{microservice-cliente-url}}/clientes/1",
+									"host": [
+										"{{microservice-cliente-url}}"
+									],
+									"path": [
+										"clientes",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 31 Oct 2024 05:07:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cuenta",
+			"item": [
+				{
+					"name": "Creacion de cuenta cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account\": {\r\n        \"accountNumber\": \"123442231\",\r\n        \"accountType\": \"Ahorros\",\r\n        \"initialBalance\": 20000,\r\n        \"status\": true\r\n    },\r\n    \"clientId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice-cuenta-url}}/cuentas",
+							"host": [
+								"{{microservice-cuenta-url}}"
+							],
+							"path": [
+								"cuentas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Creacion de cuenta cliente - ejemplo response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account\": {\r\n        \"accountNumber\": \"1234423\",\r\n        \"accountType\": \"Ahorros\",\r\n        \"initialBalance\": 20000,\r\n        \"status\": true\r\n    },\r\n    \"clientId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{microservice-cuenta-url}}/cuentas",
+									"host": [
+										"{{microservice-cuenta-url}}"
+									],
+									"path": [
+										"cuentas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 18:00:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"accountNumber\": \"1234423\",\n    \"accountType\": \"Ahorros\",\n    \"initialBalance\": 20000,\n    \"availableBalance\": 20000,\n    \"status\": true,\n    \"clientId\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Busqueda de cuenta por numero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microservice-cuenta-url}}/cuentas/1234423",
+							"host": [
+								"{{microservice-cuenta-url}}"
+							],
+							"path": [
+								"cuentas",
+								"1234423"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Busqueda de cuenta por numero - ejemplo response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{microservice-cuenta-url}}/cuentas/1234423",
+									"host": [
+										"{{microservice-cuenta-url}}"
+									],
+									"path": [
+										"cuentas",
+										"1234423"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 18:03:00 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"accountNumber\": \"1234423\",\n    \"accountType\": \"Ahorros\",\n    \"initialBalance\": 20000,\n    \"availableBalance\": 27000,\n    \"status\": true,\n    \"clientId\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Actualizacion de cuenta cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountType\": \"Ahorros\",\r\n    \"status\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice-cuenta-url}}/cuentas/1234423",
+							"host": [
+								"{{microservice-cuenta-url}}"
+							],
+							"path": [
+								"cuentas",
+								"1234423"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualizacion de cuenta cliente - ejemplo response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"accountType\": \"Ahorros\",\r\n    \"status\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{microservice-cuenta-url}}/cuentas/1234423",
+									"host": [
+										"{{microservice-cuenta-url}}"
+									],
+									"path": [
+										"cuentas",
+										"1234423"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 20:27:23 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"accountNumber\": \"1234423\",\n    \"accountType\": \"Corriente\",\n    \"initialBalance\": 20000,\n    \"availableBalance\": 27000,\n    \"status\": false,\n    \"clientId\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminacion de cuenta por numero",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{microservice-cuenta-url}}/cuentas/numero/123442231",
+							"host": [
+								"{{microservice-cuenta-url}}"
+							],
+							"path": [
+								"cuentas",
+								"numero",
+								"123442231"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminacion de cuenta por numero - ejemplo response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{microservice-cuenta-url}}/cuentas/numero/123442231",
+									"host": [
+										"{{microservice-cuenta-url}}"
+									],
+									"path": [
+										"cuentas",
+										"numero",
+										"123442231"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 21:22:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "Ocurrió un error: Cuenta no encontrada"
+						}
+					]
+				},
+				{
+					"name": "Eliminacion de cuenta por id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{microservice-cuenta-url}}/cuentas/id/4",
+							"host": [
+								"{{microservice-cuenta-url}}"
+							],
+							"path": [
+								"cuentas",
+								"id",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminacion de cuenta por id - ejemplo response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{microservice-cuenta-url}}/cuentas/id/4",
+									"host": [
+										"{{microservice-cuenta-url}}"
+									],
+									"path": [
+										"cuentas",
+										"id",
+										"4"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 21:23:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "Ocurrió un error: Cuenta no encontrada"
+						}
+					]
+				},
+				{
+					"name": "Realizacion de movimientos de cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movementType\": \"retiro\",\r\n    \"value\": -700,\r\n    \"accountId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice-cuenta-url}}/movimientos",
+							"host": [
+								"{{microservice-cuenta-url}}"
+							],
+							"path": [
+								"movimientos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Realizacion de movimientos de cuenta - ejemplo response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"movementType\": \"deposito\",\r\n    \"value\": 7000,\r\n    \"accountId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{microservice-cuenta-url}}/movimientos",
+									"host": [
+										"{{microservice-cuenta-url}}"
+									],
+									"path": [
+										"movimientos"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 18:00:37 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"date\": \"2024-11-02T18:00:37.461+00:00\",\n    \"movementType\": \"deposito\",\n    \"value\": 7000,\n    \"accountId\": 2\n}"
+						}
+					]
+				},
+				{
+					"name": "Busqueda de movimientos por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microservice-cuenta-url}}/movimientos/1",
+							"host": [
+								"{{microservice-cuenta-url}}"
+							],
+							"path": [
+								"movimientos",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Busqueda de movimientos por id - ejemplo response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{microservice-cuenta-url}}/movimientos/1",
+									"host": [
+										"{{microservice-cuenta-url}}"
+									],
+									"path": [
+										"movimientos",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 19:36:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"date\": \"2024-11-02T00:00:00.000+00:00\",\n    \"movementType\": \"retiro\",\n    \"value\": -4000,\n    \"accountId\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reporte",
+			"item": [
+				{
+					"name": "Movimientos de cliente en rango fechas",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var moment = require('moment');\r",
+									"pm.environment.set('currentdate', moment().format(\"YYYY-MM-DD\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microservice-cuenta-url}}/reportes/1?fechaInicial=2024-11-02&fechaFinal=2024-11-02",
+							"host": [
+								"{{microservice-cuenta-url}}"
+							],
+							"path": [
+								"reportes",
+								"1"
+							],
+							"query": [
+								{
+									"key": "fechaInicial",
+									"value": "2024-11-02"
+								},
+								{
+									"key": "fechaFinal",
+									"value": "2024-11-02"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Movimientos de cliente en rango fechas - ejemplo response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{microservice-cuenta-url}}/reportes/1?fechaInicial=2024-11-02&fechaFinal=2024-11-02",
+									"host": [
+										"{{microservice-cuenta-url}}"
+									],
+									"path": [
+										"reportes",
+										"1"
+									],
+									"query": [
+										{
+											"key": "fechaInicial",
+											"value": "2024-11-02"
+										},
+										{
+											"key": "fechaFinal",
+											"value": "2024-11-02"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 18:00:42 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"date\": \"2024-11-02T00:00:00.000+00:00\",\n        \"client\": \"herbert talledo\",\n        \"accountNumber\": \"123443\",\n        \"accountType\": \"Corriente\",\n        \"initialBalance\": 10000,\n        \"status\": true,\n        \"movement\": -4000,\n        \"availableBalance\": 6000\n    },\n    {\n        \"date\": \"2024-11-02T00:00:00.000+00:00\",\n        \"client\": \"herbert talledo\",\n        \"accountNumber\": \"123443\",\n        \"accountType\": \"Corriente\",\n        \"initialBalance\": 10000,\n        \"status\": true,\n        \"movement\": 5000,\n        \"availableBalance\": 15000\n    },\n    {\n        \"date\": \"2024-11-02T00:00:00.000+00:00\",\n        \"client\": \"herbert talledo\",\n        \"accountNumber\": \"123443\",\n        \"accountType\": \"Corriente\",\n        \"initialBalance\": 10000,\n        \"status\": true,\n        \"movement\": 5000,\n        \"availableBalance\": 15000\n    },\n    {\n        \"date\": \"2024-11-02T00:00:00.000+00:00\",\n        \"client\": \"herbert talledo\",\n        \"accountNumber\": \"1234423\",\n        \"accountType\": \"Ahorros\",\n        \"initialBalance\": 20000,\n        \"status\": true,\n        \"movement\": 7000,\n        \"availableBalance\": 27000\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "microservice-cliente-url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "microservice-cuenta-url",
+			"value": "http://localhost:9090",
+			"type": "string"
+		}
+	]
+}

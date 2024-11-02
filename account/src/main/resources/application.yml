@@ -1,0 +1,29 @@
+microservice:
+  name: '@project.artifactId@'
+  version: '@project.version@'
+
+spring:
+  threads:
+    virtual:
+      enabled: true
+  application.name: ${microservice.name}
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bd_challenge
+    username: postgres
+    password: herbert
+    hikari:
+      connection-timeout: 20000
+      auto-commit: false
+      minimum-idle: 1
+      max-lifetime: 120000
+      maximum-pool-size: 10
+      idle-timeout: 3000
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  amqp:
+    deserialization:
+      trust:
+        all: true
