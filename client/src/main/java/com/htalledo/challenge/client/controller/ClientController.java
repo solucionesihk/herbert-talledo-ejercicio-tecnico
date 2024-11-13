@@ -4,6 +4,7 @@ import com.htalledo.challenge.client.dto.ClientDto;
 import com.htalledo.challenge.client.service.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +18,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientDto> crearCliente(@RequestBody ClientDto clientDto) {
+    public ResponseEntity<ClientDto> crearCliente(@Validated @RequestBody ClientDto clientDto) {
         ClientDto newClient = clientService.createClient(clientDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(newClient);
     }
@@ -36,12 +37,7 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> eliminarCliente(@PathVariable Long id) {
-        try {
-            clientService.deleteClient(id);
-        }
-        catch(Exception e){
-            return ResponseEntity.internalServerError().body("Ocurrió un error: " + e.getMessage());
-        }
+        clientService.deleteClient(id);
         return ResponseEntity.ok().body("Cliente eliminado por id");
     }
 }

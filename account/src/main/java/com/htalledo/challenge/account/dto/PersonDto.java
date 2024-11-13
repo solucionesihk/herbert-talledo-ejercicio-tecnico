@@ -1,6 +1,9 @@
-package com.htalledo.challenge.client.dto;
+package com.htalledo.challenge.account.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -14,11 +17,8 @@ public class PersonDto implements Serializable {
     private static final long serialVersionUID = 19323923L;
 
     private Long id;
-    @NonNull
     private String name;
-    @NonNull
     private String gender;
-    @NonNull
     private Integer age;
     private String address;
     private String phone;

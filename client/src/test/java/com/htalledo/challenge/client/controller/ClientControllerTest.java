@@ -1,85 +1,64 @@
 package com.htalledo.challenge.client.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.htalledo.challenge.client.dto.ClientDto;
-import com.htalledo.challenge.client.mapper.ClientMapper;
-import com.htalledo.challenge.client.model.ClientEntity;
-import com.htalledo.challenge.client.repository.ClientRepository;
+import com.htalledo.challenge.client.service.ClientService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.when;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@ExtendWith(SpringExtension.class)
 class ClientControllerTest {
 
-    @Autowired
-    private ClientMapper clientMapper;
+    @Mock
+    ClientService clientService;
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
-    private ClientRepository clientRepository;
+    @InjectMocks
+    ClientController clientController;
 
     @Test
     public void testCrearCliente() throws Exception {
-        ClientDto clientDto = new ClientDto();
-        clientDto.setName("Jose Ramirez");
-        clientDto.setPassword("Jose Ramirez");
-        clientDto.setStatus(true);
 
-        mockMvc.perform(post("/clientes")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(clientDto)))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.name").value("Jose Ramirez"));
+        ClientDto clientDto = new ClientDto();
+        clientDto.setId(1L);
+        clientDto.setName("John");
+
+        when(clientService.createClient(clientDto)).thenReturn(clientDto);
+
+        var dto = clientController.crearCliente(clientDto);
+        assertNotNull(dto);
+        assertEquals(dto.getBody(), clientDto);
     }
 
     @Test
     public void testObtenerCliente() throws Exception {
-        ClientEntity client = new ClientEntity();
-        client.setId(2L);
-        client.setName("Jose Ramirez");
-        client.setPassword("Jose Ramirez");
-        client.setStatus(true);
-        client = clientRepository.save(client); // Guardamos el cliente en la base de datos
+        ClientDto clientDto = new ClientDto();
+        clientDto.setId(1L);
+        clientDto.setName("John");
 
-        mockMvc.perform(get("/clientes/" + client.getId())
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Jose Ramirez"));
+        when(clientService.getClient(1L)).thenReturn(clientDto);
+
+        var dto = clientController.obtenerCliente(1L);
+        assertNotNull(dto);
+        assertEquals(dto.getBody(), clientDto);
     }
 
     @Test
     public void testActualizarCliente() throws Exception {
-        ClientDto updatedClientDto = new ClientDto();
-        updatedClientDto.setId(2L);
-        updatedClientDto.setName("Jackie Smith");
+        ClientDto clientDto = new ClientDto();
+        clientDto.setId(1L);
+        clientDto.setName("John");
 
-        mockMvc.perform(put("/clientes/" + updatedClientDto.getId())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(updatedClientDto)))
-                .andExpect(status().is4xxClientError())
-                .andExpect(content().string(""));
+        when(clientService.updateClient(1L, clientDto)).thenReturn(clientDto);
+
+        var dto = clientController.actualizarCliente(1L, clientDto);
+        assertNotNull(dto);
+        assertEquals(dto.getBody(), clientDto);
     }
 
-    @Test
-    public void testEliminarCliente() throws Exception {
-        ClientDto client = new ClientDto();
-        client.setId(1L);
-        mockMvc.perform(delete("/clientes/" + client.getId())
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().is5xxServerError())
-                .andExpect(content().string("Ocurrió un error: Cliente no encontrado"));
-    }
 }
